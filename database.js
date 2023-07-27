@@ -11,6 +11,7 @@ const connectionPool = mysql.createPool({
 	debug: false
 });
 
+
 /** Searches for products */
 module.exports.getSearch = async (searchString) => {
 	let sql =
@@ -31,11 +32,8 @@ module.exports.getProduct = (prodId) => {
 };
 module.exports.getProductsFromCategory = (category,page) => {
 	let offset = (20*page)-1;
-	// const sql =
-	// 	'SELECT products.id, product_description.description,products.img_url,products.price,products.url FROM products INNER JOIN product_description ON products.title=product_description.id WHERE products.product_category ="'+category+'" LIMIT 30 OFFSET '+offset+'';
-	// 	return executeQuery(sql);
 	const sql =
-		'SELECT * FROM test';
+		'SELECT products.id, product_description.description,products.img_url,products.price,products.url FROM products INNER JOIN product_description ON products.title=product_description.id WHERE products.product_category ="'+category+'" LIMIT 30 OFFSET '+offset+'';
 		return executeQuery(sql);
 };
 module.exports.getAllProductsFromCategory = (category) => {
