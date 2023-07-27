@@ -63,23 +63,11 @@ app.post('/recommendations', async (request, response) => {
 	}
 	response.json(arrUniq);
 });
-app.get('/', async (request, response) => {
-	console.log('recommendations');
-	// const category = request.body.category;
-	// const page = request.body.page;
-	const category = "catego";
-	const page = 1;
-	const products = await db.getProductsFromCategory(category,page);
-		// productsArray = productsArray.concat(products);
-		response.json(products);
-});
 app.post('/category', async (request, response) => {
-	console.log('recommendations');
+	// console.log('recommendations');
 
-	// const category = request.body.category;
-	// const page = request.body.page;
-	const category = "catego";
-	const page = 1;
+	const category = request.body.category;
+	const page = request.body.page;
 	const products = await db.getProductsFromCategory(category,page);
 		// productsArray = productsArray.concat(products);
 		response.json(products);
